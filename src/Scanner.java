@@ -37,7 +37,7 @@ public class Scanner {
                 addToken(TokenType.LEFT_PARENTHESIS);
                 break;
             case ')':
-                addToken(TokenType.LEFT_PARENTHESIS);
+                addToken(TokenType.RIGHT_PARENTHESIS);
                 break;
             case '{':
                 addToken(TokenType.LEFT_BRACE);
