@@ -19,16 +19,21 @@ public class GenerateAst {
                 "Binary   : Expr left, Token operator, Expr right",
                 "Grouping : Expr expression",
                 "Literal  : Object value",
-                "Unary    : Token operator, Expr right"
-        ));
+                "Unary    : Token operator, Expr right",
+                "Variable : Token name"
+                ));
+
+        defineAst(outputDir, "Stmt", Arrays.asList(
+                "Expression : Expr expression",
+                "Print      : Expr expression",
+                "Var        : Token name, Expr initializer"));
     }
 
-    private static void defineAst(String outputDir, String baseName, List<String> types) throws FileNotFoundException, UnsupportedEncodingException {
-        String path = outputDir + "/" + baseName + ".java";
+    private static void defineAst(String outputDir, String baseName, List<String> types)
+            throws FileNotFoundException, UnsupportedEncodingException {
+        String path = baseName + ".java";
         PrintWriter writer = new PrintWriter(path, "UTF-8");
 
-        writer.println("package jlox;");
-        writer.println();
         writer.println("import java.util.List;");
         writer.println();
         writer.println("abstract class " + baseName + " {");
@@ -78,7 +83,6 @@ public class GenerateAst {
         writer.println("    }");
 
         writer.println();
-
 
         writer.println("  }");
 
